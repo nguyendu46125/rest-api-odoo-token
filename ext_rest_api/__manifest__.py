@@ -1,24 +1,14 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "REST API",
-
-    'summary': """
-        Xedap.vn""",
-
-    'description': """
-        Long description of module's purpose
-    """,
-
+    'name': 'Rest API With Token',
+    'version': "1.01",
     'author': "Du-IT",
-    'website': "http://xedap.vn",
-
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
-
-    # any module necessary for this one to work correctly
+    'category': 'Stock',
+    'sequence': 41,
+    'summary': 'Rest API With Token',
+    'price': '99.0',
+    'currency': 'USD',
+    'description': "",
     'depends': ['base'],
 
     # always loaded
@@ -34,4 +24,8 @@
     'demo': [
         'demo/demo.xml',
     ],
+    'website': 'https://www.facebook.com/the.tam.944023',
+    'license': 'LGPL-3',
+    'images': ['static/description/gif.gif'],
 }
+
