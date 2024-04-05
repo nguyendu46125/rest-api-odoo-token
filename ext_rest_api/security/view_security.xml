@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!--       Button confirm_po_exchange -->
+        <record id="access_token" model="res.groups">
+            <field name="name">Show Access Token</field>
+        </record>
+
+    </data>
+</odoo>

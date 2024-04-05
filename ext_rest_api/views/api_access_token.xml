@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="api_access_token_form_view">
+        <field name="name">api.access_token.form</field>
+        <field name="model">api.access_token</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="create_token" string="Force Done" type="object"
+                            attrs="{'invisible':[('state', '!=', 'draft')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,cancel"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="New" bg_color="bg-danger" attrs="{'invisible':[('state', '!=', 'draft')]}"/>
+                    <widget name="web_ribbon" title="DONE" bg_color="bg-success" attrs="{'invisible':[('state', '!=', 'done')]}"/>
+                    <widget name="web_ribbon" title="Cancel" bg_color="bg-secondary" attrs="{'invisible':[('state', '!=', 'cancel')]}"/>
+                    <h1>
+                        <field name="name" class="oe_inline" readonly="1"/>
+                    </h1>
+                    <h3>
+                        <field name="user_id" attrs="{'readonly':[('state', '!=', 'draft')]}"/>
+                    </h3>
+                    <group>
+                        <field name="token"/>
+                        <field name="api_key" attrs="{'readonly':[('state', '!=', 'draft')]}"/>
+                        <field name="link"/>
+                        <field name="db_name"/>
+                        <field name="login"/>
+                        <field name="pass_word" password="True" attrs="{'readonly':[('state', '!=', 'draft')]}"/>
+                        <field name="token_expiry_date"/>
+                        <field name="active"/>
+                    </group>
+                    <group>
+                        <field name="scope"/>
+                        <field name="day"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="api_access_token_tree_view">
+        <field name="name">api.access_token.tree</field>
+        <field name="model">api.access_token</field>
+        <field name="arch" type="xml">
+            <tree edit="false">
+                <field name="user_id"/>
+                <field name="api_key"/>
+                <field name="token"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'done'"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="api_access_token_act_window">
+        <field name="name">Access Token</field>
+        <field name="res_model">api.access_token</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+    <record model="ir.ui.menu" id="token_access_menu_user">
+        <field name="name">Access Token</field>
+        <field name="parent_id" ref="base.menu_users"/>
+        <field name="action" ref="api_access_token_act_window"/>
+        <field name="sequence" eval="100"/>
+    </record>
+</odoo>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="api_setting_form_view">
+        <field name="name">api.setting.form</field>
+        <field name="model">api.setting</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"/>
+                    <label for="name" class="oe_edit_only"/>
+                    <h1>
+                        <field name="name" class="oe_inline"/>
+                    </h1>
+                    <group name="config">
+                        <field name="model_id"/>
+                    </group>
+                    <notebook>
+                        <page string="[GET]" name="get">
+                            <p>[READ]</p>
+                            <field name="read_html"/>
+                            <p>{
+                                <br/>
+                                "active": "True",
+                                "name": "New",
+                                "description": "False",
+                                "sequence": "1",
+                                "project_ids": "project.project(3, 2, 4, 1)",
+                                "legend_blocked": "Blocked",
+                                },
+                            </p>
+                        </page>
+                        <page string="[POST]" name="post">
+                            <p>[POST]</p>
+                            <field name="write_html"/>
+                            <p>{
+                                "active": "True",
+                                "name": "New",
+                                "description": "False",
+                                "sequence": "1",
+                                "project_ids": "project.project(3, 2, 4, 1)",
+                                "legend_blocked": "Blocked",
+                                "legend_done": "Ready",
+                                "legend_normal": "In Progress",
+                                "mail_template_id": "mail.template(7,)",
+                                },
+                            </p>
+                        </page>
+                        <page string="[DELETE]" name="delete">
+                            <p>[DELETE]</p>
+                            <field name="unlink_html"/>
+                            <p>{
+                                "active": "True",
+                                "name": "New",
+                                "description": "False",
+                                "sequence": "1",
+                                "project_ids": "project.project(3, 2, 4, 1)",
+                                "legend_blocked": "Blocked",
+                                },
+                            </p>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="api_setting_tree_view">
+        <field name="name">api.setting.tree</field>
+        <field name="model">api.setting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="model_id"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="api_setting_act_window">
+        <field name="name">Api Setting</field>
+        <field name="res_model">api.setting</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+    <record model="ir.ui.menu" id="auth_api_key_menu_user">
+        <field name="name">Api Setting</field>
+        <field name="parent_id" ref="base.menu_users"/>
+        <field name="action" ref="api_setting_act_window"/>
+        <field name="sequence" eval="100"/>
+    </record>
+</odoo>
