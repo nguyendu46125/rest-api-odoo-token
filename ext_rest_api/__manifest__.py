@@ -6,7 +6,7 @@
     'category': 'Stock',
     'sequence': 41,
     'summary': 'Rest API With Token',
-    'price': '99.0',
+    'price': '59.0',
     'currency': 'USD',
     'description': "",
     'depends': ['base'],
